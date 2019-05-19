@@ -350,7 +350,7 @@
 <p>去github注册一个免费账号，这个不多说，不会的话网上搜一下教程，很多，你需要记录你的邮箱与用户名</p>
 <p>新建一个仓库</p>
 </blockquote>
-<p><img src="https://images2017.cnblogs.com/blog/1228928/201712/1228928-20171210161629958-1211226827.png" alt></p>
+<p><img src="https://raw.githubusercontent.com/nx90/gitpage_images/master/github%2Bhexo%E5%BB%BA%E7%AB%8B%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E8%AE%B0%E5%BD%95/1228928-20171210161629958-1211226827.png" alt="1"></p>
 <blockquote>
 <p>这里库的名字必须与用户名一致，以表明这是一个账号唯一的gitpage</p>
 </blockquote>
@@ -370,7 +370,7 @@
 <p>出现一个奇怪的图形后，可以在C盘的用户下的特定用户文件夹中的.ssh文件夹下找到id_rsa.pub文件</p>
 <p>如果找不到，在C盘的用户目录下，搜索id_rsa.pub，用记事本打开id_rsa.pub，</p>
 <p>复制其中的全部内容，添加到GitHub上，</p>
-<p><img src="https://images2017.cnblogs.com/blog/1228928/201712/1228928-20171210171603958-1209919722.jpg" alt></p>
+<p><img src="https://raw.githubusercontent.com/nx90/gitpage_images/master/github%2Bhexo%E5%BB%BA%E7%AB%8B%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E8%AE%B0%E5%BD%95/1228928-20171210171603958-1209919722.jpg" alt="2"></p>
 <p>这样本地的id_rsa密钥就可以和GitHub上的id_rsa.pub公钥进行配对，授权成功</p>
 <p>SSH key添加之后，就可以在本机git bash中进行测试，输入ssh -T <a href="mailto:git@github.com" target="_blank" rel="noopener">git@github.com</a>进行测试，</p>
 </blockquote>
@@ -388,9 +388,9 @@
 <p>下载模板源码，可以在页面<a href="https://github.com/Sariay/hexo-theme-Annie中download" target="_blank" rel="noopener">https://github.com/Sariay/hexo-theme-Annie中download</a> zip，解压后放入那个你建的hexo文件夹的themes目录下，也可以在themes目录中git clone <a href="https://github.com/Sariay/hexo-theme-Annie" target="_blank" rel="noopener">https://github.com/Sariay/hexo-theme-Annie</a> </p>
 <h3 id="三-配置你的网站"><a href="#三-配置你的网站" class="headerlink" title="三.配置你的网站"></a>三.配置你的网站</h3><p>然后，修改你建的hexo文件夹中的_config.yml</p>
 <p>先打开配置文档_config.yml，对它做如下修改，repository后面的内容是 <a href="mailto:git@gitbub.com" target="_blank" rel="noopener">git@gitbub.com</a>:username/库地址 的形式</p>
-<p>注意：type、repository、branch冒号的后面都有一个空格<br>　　<br><img src="https://images2017.cnblogs.com/blog/1228928/201712/1228928-20171210192358427-1680463018.png" alt></p>
+<p>注意：type、repository、branch冒号的后面都有一个空格<br>　　<br><img src="https://raw.githubusercontent.com/nx90/gitpage_images/master/github%2Bhexo%E5%BB%BA%E7%AB%8B%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E8%AE%B0%E5%BD%95/1228928-20171210192358427-1680463018.png" alt="3"></p>
 <p>再修改_config.yml中的theme配置项，该值名称需要与你hexo/themes目录下的那个主题的文件夹名称相同</p>
-<p><img src="https://images2017.cnblogs.com/blog/1228928/201712/1228928-20171210193756974-743203692.jpg" alt></p>
+<p><img src="https://raw.githubusercontent.com/nx90/gitpage_images/master/github%2Bhexo%E5%BB%BA%E7%AB%8B%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E8%AE%B0%E5%BD%95/1228928-20171210193756974-743203692.jpg" alt="4"></p>
 <h3 id="四-部署你的个人博客网站"><a href="#四-部署你的个人博客网站" class="headerlink" title="四.部署你的个人博客网站"></a>四.部署你的个人博客网站</h3><p>在git bash中输入cnpm install hexo-deployer-git –save</p>
 <p>然后输入 git config –global user.name “nx90”，把引号中的nx90换成你git的用户名</p>
 <p>输入git config –global user.email “<a href="mailto:2321296607@qq.com" target="_blank" rel="noopener">2321296607@qq.com</a>“ 把引号中的邮箱名换为你github账号的邮箱，</p>
