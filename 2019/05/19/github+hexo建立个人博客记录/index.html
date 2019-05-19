@@ -350,47 +350,11 @@
 <p>去github注册一个免费账号，这个不多说，不会的话网上搜一下教程，很多，你需要记录你的邮箱与用户名</p>
 <p>新建一个仓库</p>
 </blockquote>
-<p><img src="https://raw.githubusercontent.com/nx90/gitpage_images/master/github%2Bhexo%E5%BB%BA%E7%AB%8B%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E8%AE%B0%E5%BD%95/1228928-20171210161629958-1211226827.png" alt="1">{:width=”100px” height=”100px”}</p>
-<blockquote>
-<p>这里库的名字必须与用户名一致，以表明这是一个账号唯一的gitpage</p>
-</blockquote>
-<p>2.本机环境准备：</p>
-<p>node.js:</p>
-<blockquote>
-<p>下载地址：<a href="https://nodejs.org/en/" target="_blank" rel="noopener">https://nodejs.org/en/</a>  </p>
-<p>下载node.js环境，是为了建立hexo的运行环境</p>
-<p>安装完成后，在windows cmd中输入node -v，可以得出版本号即可</p>
-</blockquote>
-<p>git:</p>
-<blockquote>
-<p>下载地址：<a href="https://git-scm.com/downloads" target="_blank" rel="noopener">https://git-scm.com/downloads</a></p>
-<p>下载本地git，为本地项目提交github，以快速更新gitpage</p>
-<p>安装完成后，打开gitbash，不知道怎样打开gitbash的话，在桌面右键，即可出现选项git bash here，</p>
-<p>输入ssh-keygen -t rsa, 接着回车三下</p>
-<p>出现一个奇怪的图形后，可以在C盘的用户下的特定用户文件夹中的.ssh文件夹下找到id_rsa.pub文件</p>
-<p>如果找不到，在C盘的用户目录下，搜索id_rsa.pub，用记事本打开id_rsa.pub，</p>
-<p>复制其中的全部内容，添加到GitHub上，</p>
-<p><img src="https://raw.githubusercontent.com/nx90/gitpage_images/master/github%2Bhexo%E5%BB%BA%E7%AB%8B%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E8%AE%B0%E5%BD%95/1228928-20171210171603958-1209919722.jpg" alt="2"></p>
-<p>这样本地的id_rsa密钥就可以和GitHub上的id_rsa.pub公钥进行配对，授权成功</p>
-<p>SSH key添加之后，就可以在本机git bash中进行测试，输入ssh -T <a href="mailto:git@github.com" target="_blank" rel="noopener">git@github.com</a>进行测试，</p>
-</blockquote>
-<p>hexo:</p>
-<blockquote>
-<p>由于npm上的hexo资源在国外，访问不稳定，所以这里先安装淘宝源，就是npm在国内的镜像，在cmd中输入，npm install -g cnpm -registry=<a href="https://registry.npm.taobao.org" target="_blank" rel="noopener">https://registry.npm.taobao.org</a></p>
-<p>重开cmd窗口，输入cnpm -v检测cnpm是否安装成功，</p>
-<p>在cmd中输入cnpm install hexo-cli -g,这条是我猜的，没测试过，如果不行的话，输入npm install hexo-cli -g</p>
-<p>然后在一个你想要的位置，创建一个空文件夹，点进去这个文件夹(我是D盘的hexo文件夹，所以下文用hexo文件夹指代这个你建立的文件夹)，右键 git bash here，输入hexo init，然后cnpm install hexo server</p>
-<p>接着分别执行hexo g，hexo s，然后浏览器输入<a href="http://localhost:4000，应该可以看到hexo界面，说明前面hexo安装没啥大问题。" target="_blank" rel="noopener">http://localhost:4000，应该可以看到hexo界面，说明前面hexo安装没啥大问题。</a></p>
-</blockquote>
-<h3 id="二-选择模板"><a href="#二-选择模板" class="headerlink" title="二.选择模板"></a>二.选择模板</h3><p>现在去下载一个你喜欢的hexo模板，下载地址：<a href="https://hexo.io/themes/" target="_blank" rel="noopener">https://hexo.io/themes/</a></p>
-<p>点击图片即为该模板的效果预览，点击图片下面的文字标题，即为该模板的源码仓库，</p>
-<p>我使用的是这个： <a href="https://github.com/Sariay/hexo-theme-Annie" target="_blank" rel="noopener">https://github.com/Sariay/hexo-theme-Annie</a> 预览地址在 <a href="https://sariay.github.io/" target="_blank" rel="noopener">https://sariay.github.io/</a></p>
-<p>下载模板源码，可以在页面<a href="https://github.com/Sariay/hexo-theme-Annie中download" target="_blank" rel="noopener">https://github.com/Sariay/hexo-theme-Annie中download</a> zip，解压后放入那个你建的hexo文件夹的themes目录下，也可以在themes目录中git clone <a href="https://github.com/Sariay/hexo-theme-Annie" target="_blank" rel="noopener">https://github.com/Sariay/hexo-theme-Annie</a> </p>
-<h3 id="三-配置你的网站"><a href="#三-配置你的网站" class="headerlink" title="三.配置你的网站"></a>三.配置你的网站</h3><p>然后，修改你建的hexo文件夹中的_config.yml</p>
-<p>先打开配置文档_config.yml，对它做如下修改，repository后面的内容是 <a href="mailto:git@gitbub.com" target="_blank" rel="noopener">git@gitbub.com</a>:username/库地址 的形式</p>
-<p>注意：type、repository、branch冒号的后面都有一个空格<br>　　<br><img src="https://raw.githubusercontent.com/nx90/gitpage_images/master/github%2Bhexo%E5%BB%BA%E7%AB%8B%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E8%AE%B0%E5%BD%95/1228928-20171210192358427-1680463018.png" alt="3"></p>
+<html><br><p align="center"> <img src="https://raw.githubusercontent.com/nx90/gitpage_images/master/github%2Bhexo%E5%BB%BA%E7%AB%8B%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E8%AE%B0%E5%BD%95/1228928-20171210161629958-1211226827.png" alt="Sample" width="250" height="250"> </p><p align="center"> <em>图片示例1</em> </p> <p></p><br></html><br>&gt;<br>&gt; 这里库的名字必须与用户名一致，以表明这是一个账号唯一的gitpage<br><br>2.本机环境准备：<br><br>node.js:<br><br>&gt; 下载地址：<a href="https://nodejs.org/en/" target="_blank" rel="noopener">https://nodejs.org/en/</a><br>&gt;<br>&gt; 下载node.js环境，是为了建立hexo的运行环境<br>&gt;<br>&gt; 安装完成后，在windows cmd中输入node -v，可以得出版本号即可<br><br>git:<br>&gt;下载地址：<a href="https://git-scm.com/downloads" target="_blank" rel="noopener">https://git-scm.com/downloads</a><br>&gt;<br>&gt;下载本地git，为本地项目提交github，以快速更新gitpage<br>&gt;<br>&gt;安装完成后，打开gitbash，不知道怎样打开gitbash的话，在桌面右键，即可出现选项git bash here，<br>&gt;<br>&gt;输入ssh-keygen -t rsa, 接着回车三下<br>&gt;<br>&gt;出现一个奇怪的图形后，可以在C盘的用户下的特定用户文件夹中的.ssh文件夹下找到id_rsa.pub文件<br>&gt;<br>&gt;如果找不到，在C盘的用户目录下，搜索id_rsa.pub，用记事本打开id_rsa.pub，<br>&gt;<br>&gt;复制其中的全部内容，添加到GitHub上，<br>&gt;<br><html><br><p align="center"> <img src="https://raw.githubusercontent.com/nx90/gitpage_images/master/github%2Bhexo%E5%BB%BA%E7%AB%8B%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E8%AE%B0%E5%BD%95/1228928-20171210171603958-1209919722.jpg" alt="Sample" width="250" height="250"> </p><p align="center"> <em>图片示例2</em> </p> <p></p><br></html><br>&gt;<br>&gt;这样本地的id_rsa密钥就可以和GitHub上的id_rsa.pub公钥进行配对，授权成功<br>&gt;<br>&gt;SSH key添加之后，就可以在本机git bash中进行测试，输入ssh -T <a href="mailto:git@github.com" target="_blank" rel="noopener">git@github.com</a>进行测试，<br><br>hexo:<br><br>&gt; 由于npm上的hexo资源在国外，访问不稳定，所以这里先安装淘宝源，就是npm在国内的镜像，在cmd中输入，npm install -g cnpm -registry=<a href="https://registry.npm.taobao.org" target="_blank" rel="noopener">https://registry.npm.taobao.org</a><br>&gt;<br>&gt; 重开cmd窗口，输入cnpm -v检测cnpm是否安装成功，<br>&gt;<br>&gt; 在cmd中输入cnpm install hexo-cli -g,这条是我猜的，没测试过，如果不行的话，输入npm install hexo-cli -g<br>&gt;<br>&gt; 然后在一个你想要的位置，创建一个空文件夹，点进去这个文件夹(我是D盘的hexo文件夹，所以下文用hexo文件夹指代这个你建立的文件夹)，右键 git bash here，输入hexo init，然后cnpm install hexo server<br>&gt;<br>&gt; 接着分别执行hexo g，hexo s，然后浏览器输入<a href="http://localhost:4000，应该可以看到hexo界面，说明前面hexo安装没啥大问题。" target="_blank" rel="noopener">http://localhost:4000，应该可以看到hexo界面，说明前面hexo安装没啥大问题。</a><br><br>### 二.选择模板<br><br>现在去下载一个你喜欢的hexo模板，下载地址：<a href="https://hexo.io/themes/" target="_blank" rel="noopener">https://hexo.io/themes/</a><br><br>点击图片即为该模板的效果预览，点击图片下面的文字标题，即为该模板的源码仓库，<br><br>我使用的是这个： <a href="https://github.com/Sariay/hexo-theme-Annie" target="_blank" rel="noopener">https://github.com/Sariay/hexo-theme-Annie</a> 预览地址在 <a href="https://sariay.github.io/" target="_blank" rel="noopener">https://sariay.github.io/</a><br><br>下载模板源码，可以在页面<a href="https://github.com/Sariay/hexo-theme-Annie中download" target="_blank" rel="noopener">https://github.com/Sariay/hexo-theme-Annie中download</a> zip，解压后放入那个你建的hexo文件夹的themes目录下，也可以在themes目录中git clone <a href="https://github.com/Sariay/hexo-theme-Annie" target="_blank" rel="noopener">https://github.com/Sariay/hexo-theme-Annie</a><br><br>### 三.配置你的网站<br><br>然后，修改你建的hexo文件夹中的_config.yml<br><br>先打开配置文档_config.yml，对它做如下修改，repository后面的内容是 <a href="mailto:git@gitbub.com" target="_blank" rel="noopener">git@gitbub.com</a>:username/库地址 的形式<br><br>注意：type、repository、branch冒号的后面都有一个空格<br><br><html><br><p align="center"> <img src="https://raw.githubusercontent.com/nx90/gitpage_images/master/github%2Bhexo%E5%BB%BA%E7%AB%8B%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E8%AE%B0%E5%BD%95/1228928-20171210192358427-1680463018.png" alt="Sample" width="250" height="250"> </p><p align="center"> <em>图片示例3</em> </p> <p></p><br></html> 
+
 <p>再修改_config.yml中的theme配置项，该值名称需要与你hexo/themes目录下的那个主题的文件夹名称相同</p>
-<p><img src="https://raw.githubusercontent.com/nx90/gitpage_images/master/github%2Bhexo%E5%BB%BA%E7%AB%8B%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E8%AE%B0%E5%BD%95/1228928-20171210193756974-743203692.jpg" alt="4"></p>
+<html><br><p align="center"> <img src="https://raw.githubusercontent.com/nx90/gitpage_images/master/github%2Bhexo%E5%BB%BA%E7%AB%8B%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E8%AE%B0%E5%BD%95/1228928-20171210193756974-743203692.jpg" alt="Sample" width="250" height="250"> </p><p align="center"> <em>图片示例4</em> </p> <p></p><br></html> 
+
 <h3 id="四-部署你的个人博客网站"><a href="#四-部署你的个人博客网站" class="headerlink" title="四.部署你的个人博客网站"></a>四.部署你的个人博客网站</h3><p>在git bash中输入cnpm install hexo-deployer-git –save</p>
 <p>然后输入 git config –global user.name “nx90”，把引号中的nx90换成你git的用户名</p>
 <p>输入git config –global user.email “<a href="mailto:2321296607@qq.com" target="_blank" rel="noopener">2321296607@qq.com</a>“ 把引号中的邮箱名换为你github账号的邮箱，</p>
