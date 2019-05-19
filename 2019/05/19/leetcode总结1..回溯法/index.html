@@ -1,0 +1,846 @@
+<!--
+	作者：Sariay
+	时间：2018-09-25
+	描述：There may be a bug, but don't worry, QiLing(器灵) says that it can work normally!
+-->
+<!DOCTYPE html>
+<html class="html-loading">
+		
+
+<head><meta name="generator" content="Hexo 3.8.0">
+	<meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+  <title>
+    
+      回溯法 | Lyccc
+    
+  </title>
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content>
+  <meta name="description" content="Lycccc">
+	<!-- favicon -->
+  <link rel="shortcut icon" href="/img/favicon.ico">
+
+  <!-- css -->
+  <link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/Annie.css">
+  
+  <!-- jquery -->
+	<script src="/js/jquery.min.js"></script>
+
+  <!-- leancloud -->
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+<script src="/js/leancloud.js"></script>
+</head>
+	<body>
+		<!-- Preloader -->
+
+	<div id="preloader">
+		<div class="pre-container">
+			
+				<div class="spinner">
+					<div class="double-bounce1"></div>
+					<div class="double-bounce2"></div>
+				</div>
+						
+		</div>
+	</div>
+
+
+<!-- header -->
+<header class="fixbackground" data-img-mode="normal" data-normal-src="/img/1.jpg" data-random-max="110" data-random-src="https://sariay.github.io/Random-img/">
+	<div class="mask">
+		<!-- Logo and navigation -->
+		<div class="h-header">
+			<div id="logo">
+				<a href="/">
+						
+						<img src="/img/logo.png" alt="Logo">
+					
+				</a>
+			</div>
+			
+			<div id="navigation-show">
+				<ul>
+	
+		<li class="menu-home">
+			<a href="/" class="menu-item-home">主页</a>
+		</li>
+	
+		<li class="menu-archive">
+			<a href="/archives" class="menu-item-archive">归档</a>
+		</li>
+	
+		<li class="menu-categories">
+			<a href="/categories" class="menu-item-categories">分类</a>
+		</li>
+	
+		<li class="menu-tags">
+			<a href="/tags" class="menu-item-tags">标签</a>
+		</li>
+	
+		<li class="menu-about">
+			<a href="/about" class="menu-item-about">关于</a>
+		</li>
+	
+		<li class="menu-gallery">
+			<a href="/gallery" class="menu-item-gallery">相册</a>
+		</li>
+	
+
+	
+		<li class="menu-search">
+			<a href="javascript:;" class="popup-trigger">搜索</a>
+		</li>
+	
+</ul>
+			</div>				
+		</div>
+
+		<!-- motto -->
+		<div class="h-body">	
+			
+				<p class="motto"></p>
+			
+		</div>
+		
+		<!-- others: such as time... -->			
+		<div class="h-footer">
+			<a href="javascript:;" id="read-more"><i class="fa fa-angle-double-down" aria-hidden="true"></i>
+			</a>
+
+			
+				<!-- 
+	This is only a demo, please go to "https://time.is" to set your city time! 
+-->
+<style type="text/css">
+	.header-date {
+		font-size: 1.6rem;
+		color: #fff;
+		position: absolute;
+		bottom: 5px;
+		right: 1rem;
+		writing-mode: tb-rl;
+	}	
+	
+	.header-date a {
+		border-bottom: none;
+	}
+
+	@media only screen and (max-width: 768 ) {
+		.header-date {
+			font-size: 1rem;
+		}			
+	}
+</style>
+<div class="header-date">
+	<a href="https://time.is/Beijing" id="time_is_link" rel="nofollow"></a>
+	<span id="Beijing_z43d"></span>
+</div>
+<script src="//widget.time.is/zh.js"></script>
+<script>
+	time_is_widget.init({
+		Beijing_z43d:{
+			template:"DATE", 
+			date_format:"year年 monthname dnum日"
+		}
+	});
+</script>
+			
+		</div>
+	</div>
+</header>
+
+<div id="navigation-hide">
+	<!-- Progress bar -->
+	<div id="progress-bar"></div>
+
+	<!-- Progress percent -->
+	<div id="progress-percentage"><h1>0.0%</h1></div>
+
+	<div class="toc-switch"><span class="switch-button">目录</span></div>
+
+	<!-- Page title -->
+	<p>
+		
+			当前文章&nbsp;:&nbsp;《回溯法》
+		
+	</p>
+
+	<!-- Nav trigger for navigation-H-->
+	<a class="nav-trigger"><span></span></a>
+</div>
+
+<!-- Navigation in div(id="navigation-H") -->
+<nav class="nav-container" id="cd-nav">
+	<div class="nav-header">
+		<h3>Navigation</h3>
+		<a href="javascript:;" class="nav-close"></a>
+	</div>
+	<div class="nav-body">
+		<ul>
+	
+		<li class="menu-home">
+			<a href="/" class="menu-item-home">主页</a>
+		</li>
+	
+		<li class="menu-archive">
+			<a href="/archives" class="menu-item-archive">归档</a>
+		</li>
+	
+		<li class="menu-categories">
+			<a href="/categories" class="menu-item-categories">分类</a>
+		</li>
+	
+		<li class="menu-tags">
+			<a href="/tags" class="menu-item-tags">标签</a>
+		</li>
+	
+		<li class="menu-about">
+			<a href="/about" class="menu-item-about">关于</a>
+		</li>
+	
+		<li class="menu-gallery">
+			<a href="/gallery" class="menu-item-gallery">相册</a>
+		</li>
+	
+
+	
+		<li class="menu-search">
+			<a href="javascript:;" class="popup-trigger">搜索</a>
+		</li>
+	
+</ul>
+	</div>
+	<div class="nav-footer">
+		<ul>
+	
+		<li>
+			<a href="http://github.com/" target="_blank">
+				<i class="fa fa-github"></i>
+			</a>
+		</li>
+	
+		<li>
+			<a href="http://github.com/" target="_blank">
+				<i class="fa fa-weibo"></i>
+			</a>
+		</li>
+	
+		<li>
+			<a href="http://github.com/" target="_blank">
+				<i class="fa fa-pinterest"></i>
+			</a>
+		</li>
+	
+		<li>
+			<a href="http://github.com/" target="_blank">
+				<i class="fa fa-instagram"></i>
+			</a>
+		</li>
+	
+		<li>
+			<a href="http://github.com/" target="_blank">
+				<i class="fa fa-twitter"></i>
+			</a>
+		</li>
+	
+		<li>
+			<a href="/atom.xml" target="_blank">
+				<i class="fa fa-rss"></i>
+			</a>
+		</li>
+			
+</ul>
+
+	</div>
+</nav>
+			
+		<!--main-->
+		<main>
+			<!--
+	时间：2018-11-17
+	描述：
+		插件名称：katelog.min.js
+		插件作者：KELEN
+		插件来源: https://github.com/KELEN/katelog
+-->
+
+	
+		<div class="layout-toc">
+			<div id="layout-toc">
+				<div class="k-catelog-list" id="catelog-list" data-title="文章目录"></div>
+			</div>
+		</div>
+
+		
+		<script src="/plugin/toc/katelog.min.js"></script>
+
+		
+	 
+
+<div class="layout-post">
+	<div id="layout-post">
+	<div class="article-title">
+		<i class="fa fa-paper-plane-o" aria-hidden="true"></i>
+		
+	<a href="/2019/05/19/leetcode总结1..回溯法/" itemprop="url">
+		回溯法
+	</a>
+
+	</div>
+
+	<div class="article-meta">
+		<span>
+			<i class="fa fa-calendar"></i>
+			
+
+
+	发布于
+
+	<a href="/2019/05/19/leetcode总结1..回溯法/" itemprop="url">
+		<time datetime="2019-05-19T09:56:07.337Z" itemprop="datePublished">
+	  		2019-05-19
+	  </time>
+	</a>
+	&nbsp;
+
+
+
+
+
+			
+
+
+
+
+	更新于
+
+	<a href="/2019/05/19/leetcode总结1..回溯法/" itemprop="url">
+		<time datetime="2019-05-19T09:56:07.337Z" itemprop="dateUpdated">
+	  		2019-05-19
+	  </time>
+	</a> 
+
+
+
+		</span>
+		<span>
+			<i class="fa fa-tags"></i>
+					
+		</span>
+		
+		
+
+
+
+	</div>
+
+	<div class="article-content" id="article-content">
+		<h3 id="3月25-29-回溯法"><a href="#3月25-29-回溯法" class="headerlink" title="3月25-29 回溯法"></a>3月25-29 回溯法</h3><hr>
+<h4 id="一-思路："><a href="#一-思路：" class="headerlink" title="一. 思路："></a>一. 思路：</h4><blockquote>
+<p>(1)描述解的形式，定义一个解空间，它包含问题的所有解，这一步主要明确问题的解空间树。</p>
+<p>(2)构造状态空间树。</p>
+<p>(3)构造约束函数（用于杀死节点）。</p>
+<p>然后就要通过DFS思想完成回溯，具体流程如下：</p>
+<p>(1)设置初始化的方案（给变量赋初值，读入已知数据等）。</p>
+<p>(2)变换方式去试探，若全部试完则转(7)。</p>
+<p>(3)判断此法是否成功（通过约束函数），不成功则转(2)。</p>
+<p>(4)试探成功则前进一步再试探。</p>
+<p>(5)正确方案还未找到则转(2)。</p>
+<p>(6)已找到一种方案则记录并打印。</p>
+<p>(7)退回一步（回溯），若未退到头则转(2)。</p>
+<p>(8)已退到头则结束或打印无解。</p>
+</blockquote>
+<h4 id="二-算法步骤："><a href="#二-算法步骤：" class="headerlink" title="二. 算法步骤："></a>二. 算法步骤：</h4><p><strong><em>1</em>.在动手写算法之前要想明白的事：</strong></p>
+<ul>
+<li><em>树的子节点的空间范围</em></li>
+<li><em>由此而来的状态变量和层数变量是哪些</em></li>
+</ul>
+<p><strong><em>2</em>. 开始写算法，所需的函数内部结构如下：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">self.ans #解空间</span><br><span class="line">def go_next():      #约束函数</span><br><span class="line"> </span><br><span class="line">def add_ans():      #可以添加临时解至self.ans的条件</span><br><span class="line"> </span><br><span class="line">def go(result,i,j):           #迭代函数，参数为状态变量与层数变量</span><br><span class="line">                     #状态变量一般是可能解目前的状态，和一些辅助信息，帮助约束函数判断。前者用result表示</span><br><span class="line">                     #层数变量一般是位置信息</span><br><span class="line">    if add_ans():</span><br><span class="line">        self.ans.append(copy.deepcopy(result))</span><br><span class="line">    else:</span><br><span class="line">        for i in range(len(子节点空间)) #遍历子节点可能的值</span><br><span class="line">            if go_next():               #如果子节点符合条件，不会被剪枝</span><br><span class="line">                更新状态变量与层数变量</span><br><span class="line">                其中，状态变量需要自更新，层数变量不要自更新</span><br><span class="line">                即，状态变量如result，需要写result.append()这样的，直接去更新变量本身；</span><br><span class="line">                而，层数变量，如记录坐标或者index的i,j等变量，需要写i1 = i+1之类的，然后传给下一个go()，不更新自身</span><br><span class="line">                go(result,i1,j1)</span><br><span class="line">    #然后这里需要细想你for遍历结束时状态变量的改变，是否需要回退，ans.append之后状态变量是否需要回退，之类的问题。如果都需要回退，就在这写，不然就写到if else里面，</span><br><span class="line">    if len(result):</span><br><span class="line">        result.pop()</span><br><span class="line">go([],0,0)</span><br><span class="line">return self.ans</span><br></pre></td></tr></table></figure>
+<hr>
+<p>下面是几个leetcode回溯法典型题与我写的解法(没有优化过，比较烂，但是结构还算清晰)，都是困难难度的：</p>
+<h4 id="题目1："><a href="#题目1：" class="headerlink" title="题目1："></a>题目1：</h4><blockquote>
+<p>给出一个不重复大于0数字的数组和一个目标，求数组中数的组合的和得到该目标（数字不同组合顺序当做一个解）。</p>
+</blockquote>
+<h6 id="解法："><a href="#解法：" class="headerlink" title="解法："></a>解法：</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">#coding:gbk</span><br><span class="line">import copy</span><br><span class="line"></span><br><span class="line">class Solution(object):</span><br><span class="line">    def __init__(self):</span><br><span class="line">        self.ans = []               #定义解空间</span><br><span class="line">    def he(self, nums, target):</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        :type board: List[int], targer: int</span><br><span class="line">        :rtype: List[List[int]]</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        def go_next(now, node):     #构造约束函数</span><br><span class="line">            if sum(now)+node &lt;= target:</span><br><span class="line">                return True</span><br><span class="line">            else:</span><br><span class="line">                return False</span><br><span class="line">        def go(nums1, list1):</span><br><span class="line">            if sum(list1) == target:                    #成功条件</span><br><span class="line">                self.ans.append(copy.deepcopy(list1))</span><br><span class="line">            else:</span><br><span class="line">                for i in range(len(nums1)):</span><br><span class="line">                    if go_next(list1, nums1[i]):</span><br><span class="line">                        list1.append(nums1[i])</span><br><span class="line">                        go(nums1[i+1:],list1)</span><br><span class="line">            if len(list1):</span><br><span class="line">                list1.pop()</span><br><span class="line">        go(nums,[])</span><br><span class="line">        return self.ans</span><br><span class="line"></span><br><span class="line">def main():</span><br><span class="line">    a = Solution()</span><br><span class="line">    print(a.he([2,3,7,6,4,5],9))</span><br><span class="line"></span><br><span class="line">if __name__ == &quot;__main__&quot;:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
+<h4 id="题目2："><a href="#题目2：" class="headerlink" title="题目2："></a>题目2：</h4><blockquote>
+<p>n 皇后问题研究的是如何将 n 个皇后放置在 n×n 的棋盘上，并且使皇后彼此之间不能相互攻击。即不能同行，不能同列，不能互成45度角的斜线。</p>
+<p>示例:</p>
+<p>输入: 4<br>输出: [<br> [“.Q..”,  // 解法 1<br>  “…Q”,<br>  “Q…”,<br>  “..Q.”],</p>
+<p> [“..Q.”,  // 解法 2<br>  “Q…”,<br>  “…Q”,<br>  “.Q..”]<br>]<br>解释: 4 皇后问题存在两个不同的解法。</p>
+</blockquote>
+<h6 id="解法：-1"><a href="#解法：-1" class="headerlink" title="解法："></a>解法：</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line">#coding:gbk</span><br><span class="line">import copy</span><br><span class="line"></span><br><span class="line">class Solution(object):</span><br><span class="line">    def solveNQueens(self, n):</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        :type n: int</span><br><span class="line">        :rtype: List[List[str]]</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        self.ans = []                                                                                           #构造解空间</span><br><span class="line">        def go_next1(row, col, next_node):                                                                      #约束函数</span><br><span class="line">            for i in range(len(row)):</span><br><span class="line">                if abs(row[i] - next_node[0]) == abs(col[i] - next_node[1]):</span><br><span class="line">                    return True</span><br><span class="line">            return False</span><br><span class="line">        def go_next(row, col, next_node):</span><br><span class="line">            if (next_node[0] in row) or (next_node[1] in col) or (go_next1(row,col,next_node)):                 #约束函数</span><br><span class="line">                return False</span><br><span class="line">            else:</span><br><span class="line">                return True</span><br><span class="line">        def go(row, col, result, i):                                                                            #go递归函数</span><br><span class="line">            if len(result)==n:                                                                                  #写入ans条件</span><br><span class="line">                self.ans.append(copy.deepcopy(result))</span><br><span class="line">                if len(result):                                                                                     #写入ans了怎么办：回退至上一步状态</span><br><span class="line">                    result.pop()</span><br><span class="line">                    row.pop()</span><br><span class="line">                    col.pop()</span><br><span class="line">            else:                                                                                               #还不足以写入ans时：</span><br><span class="line">                for j in range(n):                                                                                  #遍历解空间树子节点，寻找可能的子节点</span><br><span class="line">                    if go_next(row,col,[i,j]):                                                                          #判断该子节点是否被剪枝</span><br><span class="line">                        row.append(i)                                                                                       #处理状态变量: row col result的改变</span><br><span class="line">                        col.append(j)</span><br><span class="line">                        foo = &quot;&quot;</span><br><span class="line">                        for k in range(n):</span><br><span class="line">                            if k == j:</span><br><span class="line">                                foo += &quot;Q&quot;</span><br><span class="line">                            else:</span><br><span class="line">                                foo += &quot;.&quot;</span><br><span class="line">                        result.append(foo)</span><br><span class="line">                        go(row, col, result, i+1)                                                                           #开始遍历树的下一层，传递状态变量row col result，与层数变量i</span><br><span class="line">                if len(result):                                                                                     #遍历该层子节点结束，回退至上一步状态</span><br><span class="line">                    result.pop()                                                                                    #这里为什么不回退i的状态呢？因为i的状态根本就没有被改变！我们没有写i += 1然后传进去</span><br><span class="line">                    row.pop()                                                                                       #而是直接把i+1传到了下一次的go里面去，所以无需回退i的状态</span><br><span class="line">                    col.pop()                                                                                       #所以我觉得这种写法是不规范的，就应该写i += 1，然后回退的时候回退它</span><br><span class="line"></span><br><span class="line">        go([],[],[],0)                                                                                          #初始状态，</span><br><span class="line">        return self.ans                                                                                        #返回ans</span><br><span class="line"></span><br><span class="line">def main():</span><br><span class="line">    a = Solution()</span><br><span class="line">    print(a.solveNQueens(4))</span><br><span class="line"></span><br><span class="line">if __name__ == &quot;__main__&quot;:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
+<h4 id="题目3："><a href="#题目3：" class="headerlink" title="题目3："></a>题目3：</h4><blockquote>
+<p>解9*9数独，编写一个程序，通过已填充的空格来解决数独问题。</p>
+<p>一个数独的解法需遵循如下规则：</p>
+<pre><code>数字 1-9 在每一行只能出现一次。
+数字 1-9 在每一列只能出现一次。
+数字 1-9 在每一个以粗实线分隔的 3x3 宫内只能出现一次。
+</code></pre><p>空白格用 ‘.’ 表示。</p>
+<p>Note:</p>
+<pre><code>给定的数独序列只包含数字 1-9 和字符 &apos;.&apos; 。
+你可以假设给定的数独只有唯一解。
+给定数独永远是 9x9 形式的。
+</code></pre></blockquote>
+<h6 id="解法：-2"><a href="#解法：-2" class="headerlink" title="解法："></a>解法：</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br></pre></td><td class="code"><pre><span class="line">#coding:gbk</span><br><span class="line">import copy</span><br><span class="line"></span><br><span class="line">class Solution(object):</span><br><span class="line">    def solveSudoku(self, board):</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        :type board: List[List[str]]</span><br><span class="line">        :rtype: None Do not return anything, modify board in-place instead.</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        self.ans = []                                                           #解空间</span><br><span class="line"></span><br><span class="line">        def go_next(hmp, next_node):                                            #约束函数</span><br><span class="line">            if (&apos;r&apos;+ str(next_node[1][0]+1)) in hmp[next_node[0]] or (&apos;c&apos;+ str(next_node[1][1]+1)) in hmp[next_node[0]] or (&apos;s&apos;+ str(next_node[1][2]+1)) in hmp[next_node[0]]:</span><br><span class="line">                return False</span><br><span class="line">            else:</span><br><span class="line">                return True</span><br><span class="line"></span><br><span class="line">        def go(hmp, result, j, k, l, t):                                        #迭代函数，参数为状态变量hmp,result，层数变量为j,k,l,</span><br><span class="line">            if j == 9 :                                                         #最外层处理ans的判断</span><br><span class="line">                self.ans.append(copy.deepcopy(result))                              #加ans</span><br><span class="line">                return self.ans                                                     #返回ans</span><br><span class="line">            else:                                                               #还不能添加ans时</span><br><span class="line">                if board[j][k] != &quot;.&quot;:                                              #若是给定的数值，则跳至子节点，维护层数变量，其他不予处理</span><br><span class="line">                    if k == 8:</span><br><span class="line">                        j1 = j + 1</span><br><span class="line">                        k1 = 0</span><br><span class="line">                    else:</span><br><span class="line">                        j1 = j</span><br><span class="line">                        k1 = k + 1</span><br><span class="line">                    l1 = j1 / 3 * 3 + k1 / 3</span><br><span class="line">                    go(hmp, result, j1, k1, l1, board[j][k])</span><br><span class="line">                else:                                                               #若是可以尝试的层，则从1-9这些子节点挨个尝试</span><br><span class="line">                    for i in xrange(1,10):                                              #遍历子节点</span><br><span class="line">                        if go_next(hmp, [i,[j,k,l]]):                                       #约束函数剪枝判断</span><br><span class="line">                            hmp[i].append(&apos;r&apos; + str(j+1))                                       #维护状态变量hmp,result，层数变量j,k,l</span><br><span class="line">                            hmp[i].append(&apos;c&apos; + str(k+1))</span><br><span class="line">                            hmp[i].append(&apos;s&apos; + str(l+1))</span><br><span class="line">                            result[j][k] = str(i)</span><br><span class="line">                            if k == 8:</span><br><span class="line">                                j1 = j+1</span><br><span class="line">                                k1 = 0</span><br><span class="line">                            else:</span><br><span class="line">                                j1 = j</span><br><span class="line">                                k1 = k+1</span><br><span class="line">                            l1 = j1 / 3 * 3 + k1 / 3                                            #这里迭代至下一层时要记得，千万不要直接改状态变量，然后直接传。在这里要j1=j+1，然后传j1，不然会出问题</span><br><span class="line">                            go(hmp,result,j1,k1,l1,i)                                           #维护结束，迭代至下一层</span><br><span class="line">                if k:                                                               #从子节点退回，说明需要回退状态，所以在此维护状态变量hmp,result和层数变量j,k,l</span><br><span class="line">                    k -= 1</span><br><span class="line">                else:</span><br><span class="line">                    j -= 1</span><br><span class="line">                    k = 8</span><br><span class="line">                l = j / 3 * 3 + k / 3</span><br><span class="line">                if board[j][k] == &quot;.&quot; and len(hmp[t]):</span><br><span class="line">                    hmp[t].pop()</span><br><span class="line">                    hmp[t].pop()</span><br><span class="line">                    hmp[t].pop()</span><br><span class="line">                    result[j][k] = &quot;.&quot;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        def hmp_handle(input):                                                      #预处理</span><br><span class="line">            hmp1 = &#123;1:[],2:[],3:[],4:[],5:[],6:[],7:[],8:[],9:[]&#125;</span><br><span class="line">            for i in xrange(9):</span><br><span class="line">                for j in xrange(9):</span><br><span class="line">                    if input[i][j] != &quot;.&quot;:</span><br><span class="line">                        hmp1[int(input[i][j])].append(&apos;r&apos; + str(i+1))</span><br><span class="line">                        hmp1[int(input[i][j])].append(&apos;c&apos; + str(j+1))</span><br><span class="line">                        hmp1[int(input[i][j])].append(&apos;s&apos; + str(i/3*3 + j/3 + 1))</span><br><span class="line">            return hmp1</span><br><span class="line">        result_list = copy.deepcopy(board)</span><br><span class="line">        go(hmp_handle(board),result_list,0,0,0,1)                                   #开始迭代</span><br><span class="line">        return self.ans                                                             #返回ans</span><br><span class="line"></span><br><span class="line">def main():</span><br><span class="line">    a = Solution()</span><br><span class="line">    print(a.solveSudoku([[&quot;5&quot;,&quot;3&quot;,&quot;.&quot;,&quot;.&quot;,&quot;7&quot;,&quot;.&quot;,&quot;.&quot;,&quot;.&quot;,&quot;.&quot;],[&quot;6&quot;,&quot;.&quot;,&quot;.&quot;,&quot;1&quot;,&quot;9&quot;,&quot;5&quot;,&quot;.&quot;,&quot;.&quot;,&quot;.&quot;],[&quot;.&quot;,&quot;9&quot;,&quot;8&quot;,&quot;.&quot;,&quot;.&quot;,&quot;.&quot;,&quot;.&quot;,&quot;6&quot;,&quot;.&quot;],[&quot;8&quot;,&quot;.&quot;,&quot;.&quot;,&quot;.&quot;,&quot;6&quot;,&quot;.&quot;,&quot;.&quot;,&quot;.&quot;,&quot;3&quot;],[&quot;4&quot;,&quot;.&quot;,&quot;.&quot;,&quot;8&quot;,&quot;.&quot;,&quot;3&quot;,&quot;.&quot;,&quot;.&quot;,&quot;1&quot;],[&quot;7&quot;,&quot;.&quot;,&quot;.&quot;,&quot;.&quot;,&quot;2&quot;,&quot;.&quot;,&quot;.&quot;,&quot;.&quot;,&quot;6&quot;],[&quot;.&quot;,&quot;6&quot;,&quot;.&quot;,&quot;.&quot;,&quot;.&quot;,&quot;.&quot;,&quot;2&quot;,&quot;8&quot;,&quot;.&quot;],[&quot;.&quot;,&quot;.&quot;,&quot;.&quot;,&quot;4&quot;,&quot;1&quot;,&quot;9&quot;,&quot;.&quot;,&quot;.&quot;,&quot;5&quot;],[&quot;.&quot;,&quot;.&quot;,&quot;.&quot;,&quot;.&quot;,&quot;8&quot;,&quot;.&quot;,&quot;.&quot;,&quot;7&quot;,&quot;9&quot;]]))</span><br><span class="line"></span><br><span class="line">if __name__ == &quot;__main__&quot;:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
+<h4 id="题目4："><a href="#题目4：" class="headerlink" title="题目4："></a>题目4：</h4><blockquote>
+<p>在二维网格 grid 上，有 4 种类型的方格：</p>
+<pre><code>1 表示起始方格。且只有一个起始方格。
+2 表示结束方格，且只有一个结束方格。
+0 表示我们可以走过的空方格。
+-1 表示我们无法跨越的障碍。
+</code></pre><p>返回在四个方向（上、下、左、右）上行走时，从起始方格到结束方格的不同路径的数目，每一个无障碍方格都要通过一次。<br>示例 1：</p>
+<p>输入：[[1,0,0,0],[0,0,0,0],[0,0,2,-1]]<br>输出：2<br>解释：我们有以下两条路径：</p>
+<ol>
+<li>(0,0),(0,1),(0,2),(0,3),(1,3),(1,2),(1,1),(1,0),(2,0),(2,1),(2,2)</li>
+<li>(0,0),(1,0),(2,0),(2,1),(1,1),(0,1),(0,2),(0,3),(1,3),(1,2),(2,2)</li>
+</ol>
+<p>示例 2：</p>
+<p>输入：[[1,0,0,0],[0,0,0,0],[0,0,0,2]]<br>输出：4<br>解释：我们有以下四条路径： </p>
+<ol>
+<li>(0,0),(0,1),(0,2),(0,3),(1,3),(1,2),(1,1),(1,0),(2,0),(2,1),(2,2),(2,3)</li>
+<li>(0,0),(0,1),(1,1),(1,0),(2,0),(2,1),(2,2),(1,2),(0,2),(0,3),(1,3),(2,3)</li>
+<li>(0,0),(1,0),(2,0),(2,1),(2,2),(1,2),(1,1),(0,1),(0,2),(0,3),(1,3),(2,3)</li>
+<li>(0,0),(1,0),(2,0),(2,1),(1,1),(0,1),(0,2),(0,3),(1,3),(1,2),(2,2),(2,3)</li>
+</ol>
+</blockquote>
+<h6 id="解法：-3"><a href="#解法：-3" class="headerlink" title="解法："></a>解法：</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br></pre></td><td class="code"><pre><span class="line">#coding:gbk</span><br><span class="line">import copy</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">class Solution(object):</span><br><span class="line">    def uniquePathsIII(self, grid):</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        :type grid: List[List[int]]</span><br><span class="line">        :rtype: int</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        self.ans = 0</span><br><span class="line">        self.a = len(grid)</span><br><span class="line">        self.b = len(grid[0])</span><br><span class="line">        self.ab = self.a * self.b</span><br><span class="line">        def go_next(result, i ,j):</span><br><span class="line">            if ([i,j] in result) or (not 0&lt;=i&lt;=self.a-1) or (not 0&lt;=j&lt;=self.b-1) or ([i,j] == self.e and len(result) != (self.ab -1 -self.c)):</span><br><span class="line">                return False</span><br><span class="line">            try:</span><br><span class="line">                if grid[i][j] == -1:</span><br><span class="line">                    return False</span><br><span class="line">            except:</span><br><span class="line">                pass</span><br><span class="line">            return True</span><br><span class="line"></span><br><span class="line">        def add_ans(result, i, j):</span><br><span class="line">            if (0 &lt;= i &lt;= self.a) and (0 &lt;= j &lt;= self.b):</span><br><span class="line">                try:</span><br><span class="line">                    if grid[i][j] == 2 and len(result) == (self.ab - self.c -1):</span><br><span class="line">                        return True</span><br><span class="line">                except IndexError:</span><br><span class="line">                    pass</span><br><span class="line">            return False</span><br><span class="line">        def go(result, i, j):</span><br><span class="line">            if add_ans(result,i,j):</span><br><span class="line">                self.ans +=1</span><br><span class="line">            else:</span><br><span class="line">                for k in range(4):</span><br><span class="line">                    if go_next(result,i,j):</span><br><span class="line">                        result.append([i,j])</span><br><span class="line">                        if k%2:</span><br><span class="line">                            i1 = i</span><br><span class="line">                            j1 = 2-k+j</span><br><span class="line">                        else:</span><br><span class="line">                            i1 = k-1+i</span><br><span class="line">                            j1 = j</span><br><span class="line">                        go(result,i1,j1)</span><br><span class="line">            if len(result):</span><br><span class="line">                result.pop()</span><br><span class="line"></span><br><span class="line">        def preprocess(grid):</span><br><span class="line">            j = 0</span><br><span class="line">            a = []</span><br><span class="line">            b = []</span><br><span class="line">            for i in range(len(grid)):</span><br><span class="line">                if -1 in grid[i]:</span><br><span class="line">                    j += grid[i].count(-1)</span><br><span class="line">                if 1 in grid[i]:</span><br><span class="line">                    a.append(i)</span><br><span class="line">                    a.append(grid[i].index(1))</span><br><span class="line">                if 2 in grid[i]:</span><br><span class="line">                    b.append(i)</span><br><span class="line">                    b.append(grid[i].index(2))</span><br><span class="line">            return (j,a,b)</span><br><span class="line">        (self.c, self.d, self.e) = preprocess(grid)</span><br><span class="line">        go([],self.d[0],self.d[1])</span><br><span class="line">        return self.ans</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def main():</span><br><span class="line">    a = Solution()</span><br><span class="line">    print(a.uniquePathsIII([[1,0,0,0],[0,0,0,0],[0,0,2,-1]]))</span><br><span class="line"></span><br><span class="line">if __name__ == &quot;__main__&quot;:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>其实这些代码还都能优化，但我需要快点熟悉套路，没心思再搞优化了</p>
+</blockquote>
+	
+	</div>
+	
+	<div id="current-post-cover" data-scr="/img/cart_cover.jpg"></div>
+
+	<!-- relate post, comment...-->
+	<div class="investment-container">
+		<div class="investment-header">
+			<div class="investment-title-1">
+				<div class="on">相关文章</div>
+				<div>评论</div>
+				<div>分享</div>
+			</div>
+			<div class="investment-title-2">	            
+				
+	<span>
+		<a href="javascript: window.scrollTo(0, 0);">返回顶部</a>
+		
+		
+			<a href="/2019/05/19/hello-world/" title="Hello World" rel="next">
+				下一篇&raquo;
+			</a>
+			
+	</span>
+
+
+      		
+			</div>	
+		</div>
+		
+		<div class="investment-content">
+			<div class="investment-content-list">
+				
+
+<div class="relate-post">
+	
+		<ul>
+			
+					<li>
+						<div class="relate-post-text">
+							<a class="relate-post-title" href="/2019/05/19/hello-world/" title="Hello World">
+								Hello World			
+							</a>
+							<p class="relate-post-date">
+								<i class="fa fa-calendar"></i>
+								五月 19日, 2019				
+							</p>
+							<p class="relate-post-content">
+								Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using ...
+							</p>
+						</div>
+
+						<div class="relate-post-cover">
+							<a href="/2019/05/19/hello-world/" title="Hello World">				
+								
+								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/cart_cover.jpg" alt="Hello World">
+							</a>
+						</div>
+					</li>											
+			
+			
+		</ul>
+	
+</div>	
+			</div>
+			<div class="investment-content-list">
+				<div class="layout-comment">
+
+	
+
+		
+
+			<!-- I don't know !!!-->
+			<div>Please check the comment setting in config.yml of hexo-theme-Annie!</div>
+			
+		
+		
+	
+
+</div>
+			</div>
+			<div class="investment-content-list">
+				<div class="layout-share">
+	
+	
+
+		
+			
+			<!-- socialShare share -->
+			<div class="social-share"></div>
+
+<!--  css & js -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
+<script async src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+			
+		
+		
+	
+</div>
+
+
+			</div>
+		</div>	
+	</div>
+	</div>
+</div>
+
+
+
+	<!-- leancloud -->
+	<!--
+	时间：2018-11-27
+	描述：
+		文章访问量：visitors
+		文章喜欢量：likes	
+		文章排行榜：topNPost
+		其他得说明：
+			01-Cookie相关的函数 
+				https://blog.csdn.net/somehow1002/article/details/78511541（Author：somehow1002）
+			02-visitors相关的函数 
+				https://blog.csdn.net/u013553529/article/details/63357382（Author：爱博客大伯）
+				https://notes.doublemine.me/2015-10-21-为NexT主题添加文章阅读量统计功能.html（Author：夏末）
+			03-topNPost相关的函数
+				https://hoxis.github.io/hexo-next-read-rank.html（Author：hoxis）
+			04-likes相关的函数，
+				参考了01 & 02进行简单的设计与实现
+-->
+
+
+	
+
+
+<!-- show math formula -->
+
+
+
+	 
+	<script src="/plugin/clipboard/clipboard.js"></script>
+	<script>
+		// Copy code !
+	    function codePreprocessing() {
+	        $("#article-content .highlight").each(function() {
+
+	            $(this).wrap('<div id="post-code"></div>');
+
+	        })
+
+	        $("#article-content #post-code").each(function() {
+
+	            $(this).prepend('<nav class="copy-nav"><span><i class="code-language"></i></span></nav>');
+
+	        })
+
+	        $("#article-content .copy-nav").each(function() {
+	            var temp = $(this).next().attr('class'),
+	                language = ((temp.length > 9) && (temp != null)) ? temp.substr(10) : "none"; //why 9? Need to check language?
+
+	            $(this).find('.code-language').text(language);
+
+	            $(this).append('<span class="copy-btn"><i class="fa fa-copy" aria-hidden="true"></i></span>');
+
+	        });
+	    }
+
+		function codeCopy() {
+		    $('#article-content #post-code').each(function(i) {
+		        var codeCopyId = 'codeCopy-' + i;
+
+		        var codeNode = $(this).find('.code'),
+		            copyButton = $(this).find('.copy-btn');
+
+		        codeNode.attr('id', codeCopyId);
+		        copyButton.attr('data-clipboard-target-id', codeCopyId);
+		    })
+
+		    
+			var clipboard = new ClipboardJS('.copy-btn', {
+					target: function(trigger) {
+						return document.getElementById(trigger.getAttribute('data-clipboard-target-id'));
+					}
+		      	});
+
+			//pure js
+			function showTooltip(elem, msg) {		   
+				elem.setAttribute('aria-label', msg);
+				elem.setAttribute('class', 'copy-btn copy-status');
+				setTimeout(function() {
+					elem.setAttribute('class', 'copy-btn');
+				}, 2000);
+			}
+
+			clipboard.on('success', function(e) {
+			    e.clearSelection();
+			    console.info('Action:', e.action);		   
+			    console.info('Trigger:', e.trigger);
+			    showTooltip(e.trigger, 'Copied!');
+			    
+			});
+			clipboard.on('error', function(e) {
+			    console.error('Action:', e.action);
+			    console.error('Trigger:', e.trigger);
+			});
+		
+
+		}
+
+		if ($('.layout-post').length) {
+		    codePreprocessing();
+		    codeCopy();
+		} 
+	</script>
+
+
+
+
+
+<link rel="stylesheet" href="/plugin/fancybox/jquery.fancybox.css">
+<script src="/plugin/fancybox/jquery.fancybox.js"></script>
+
+<script type="text/javascript">
+	var titleID = $('.article-title a'),
+		imageID = $('.article-content img'),
+		videoID = $('.article-content video');
+
+	var postTitle = titleID.text() ? titleID.text() : "No post title!";
+
+	imageID.each(function() {
+		var imgPath = $(this).attr('src'),
+			imgTitle = $(this).attr('alt') ? $(this).attr('alt') : "No image description!";
+
+		//给每个匹配的<img>元素打包, 即添加父元素<a>
+		$(this).wrap('<a data-fancybox="gallery" data-caption=" 《 ' + postTitle + ' 》 ' + imgTitle + ' "  href=" ' + imgPath + ' "> </a>');
+	});
+
+	videoID.each(function() {
+		var videoPath = $(this).attr('src');
+
+		//给每个匹配的<img>元素打包, 即添加父元素<a>
+		$(this).wrap('<a data-fancybox href=" ' + videoPath + ' "> </a>');
+	});
+	//TODO：支持html5 video
+
+	if($('#layout-post').length) {
+		$('[data-fancybox="gallery"]').fancybox({
+			loop: true,
+			buttons: [
+				"zoom",
+				"share",
+				"slideShow",
+				"fullScreen",
+				//"download",
+				"thumbs",
+				"close"
+			],
+			protect: false
+		});
+	}
+</script>
+		</main>
+
+		<!--footer-->
+		<footer>
+	<div class="social">
+		<ul>
+	
+		<li>
+			<a href="http://github.com/" target="_blank">
+				<i class="fa fa-github"></i>
+			</a>
+		</li>
+	
+		<li>
+			<a href="http://github.com/" target="_blank">
+				<i class="fa fa-weibo"></i>
+			</a>
+		</li>
+	
+		<li>
+			<a href="http://github.com/" target="_blank">
+				<i class="fa fa-pinterest"></i>
+			</a>
+		</li>
+	
+		<li>
+			<a href="http://github.com/" target="_blank">
+				<i class="fa fa-instagram"></i>
+			</a>
+		</li>
+	
+		<li>
+			<a href="http://github.com/" target="_blank">
+				<i class="fa fa-twitter"></i>
+			</a>
+		</li>
+	
+		<li>
+			<a href="/atom.xml" target="_blank">
+				<i class="fa fa-rss"></i>
+			</a>
+		</li>
+			
+</ul>
+
+	</div>
+		
+	<div class="copyright">
+		<p>
+			 
+				&copy;2017 - 2019, content by John Doe. All Rights Reserved.
+			
+			
+			
+
+	<!-- busuanzi -->
+	<!-- busuanzi -->
+
+		
+	<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+	
+
+		<span id="busuanzi_container_page_pv">
+	  		本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+		</span>
+
+	
+
+
+
+
+		</p>
+		<p>
+			<a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a> Theme <a href="https://github.com/Sariay/hexo-theme-Annie" title="Annie" target="_blank" rel="noopener">Annie</a> by Sariay.
+			<a href="javascript:zh_tran('s');" class="zh_click" id="zh_click_s">简体</a> 
+			<a href="javascript:zh_tran('t');" class="zh_click" id="zh_click_t">繁體</a>				
+		</p>
+	</div>		
+</footer>
+		
+	<!-- set '1' to show motto in all pages! -->
+
+	<script src="/plugin/motto/motto.js"></script>
+	
+	<script type="text/javascript">
+		$(".motto").html( getMingYanContent() );
+	</script>	
+
+
+
+
+	<!--
+	时间：2018-10-3
+	描述：
+		插件名称：hexo-generator-search-zip
+		插件来源: https://github.com/SuperKieran/hexo-generator-search-zip
+		代码参考：https://github.com/SuperKieran/TKL/blob/master/layout/_partial/search.ejs(Include: js & css)	
+-->
+<div class="popup search-popup local-search-popup">
+	<div class="local-search-container">
+		<span class="popup-btn-close">
+      		ESC
+   		</span>
+		<div class="local-search-header">
+			<div class="input-prompt">				
+			</div>
+			<input autocomplete="off" placeholder="Search..." type="text" id="local-search-input">
+		</div>
+		<div class="local-search-body">
+			<div id="local-search-output"></div>
+		</div>
+		<div class="local-search-footer">
+			<div class="topN-post">				
+				
+								
+			</div>
+		</div>
+	</div>
+</div>
+
+<script src="/plugin/search/ziploader.js"></script>
+<script src="/plugin/search/search.js"></script>
+
+<script type="text/javascript">
+	var search_path = 'search.json',
+		zip_Path = '/search.zip',
+		version_Path = '/searchVersion.txt',
+		input_Trigger = 'auto',
+		top_N = '2';
+
+	themeLocalSearch({
+		search_path, 
+		zip_Path, 
+		version_Path, 
+		input_Trigger, 
+		top_N
+	});
+</script>
+
+
+<!-- love effect -->
+
+	<script src="/plugin/love/love.js"></script>
+
+
+<!-- back to top -->
+
+	
+	<div id="totop">
+  		<a href="javascript:;" name="TOTOP" class="fa fa-arrow-up"></a>
+	</div>
+
+
+
+
+<!-- site analysis -->
+
+
+	<!-- site-analysis -->
+	
+	
+	
+	
+	
+ 
+
+<script src="/plugin/vibrant/vibrant.js"></script>
+<script src="/plugin/chinese/chinese.js"></script>
+<script src="/plugin/imgLazyLoader/yall.min.js"></script>
+<script src="/plugin/imgResize/jquery.resizeimagetoparent.min.js"></script>
+<script src="/plugin/nicescroll/jquery.nicescroll.js"></script>
+<script src="/js/resizediv.js"></script>
+<script src="/js/main.js"></script>
+	</body>	
+</html>
